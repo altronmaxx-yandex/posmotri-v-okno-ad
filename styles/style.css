@@ -1,51 +1,299 @@
 *,
-*::before,
-*::after {
+::before,
+::after {
   box-sizing: border-box;
 }
 
 html {
-  block-size: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .page {
-  inline-size: 1200px;
-  block-size: 100%;
-  margin: auto;
-  color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: 18px;
-  background-color: #1b1919;
+  width: 1200px;
+  height: 100%;
+  margin-inline: auto;
+  color: #ffffff;
+  background: #1b1919;
+  font: 18px "Fira Sans Condensed", sans-serif;
 }
 
-h1,
-h2,
-h3,
+h1, 
+h2, 
+h3, 
 h4,
-p,
-ul,
-ol,
+p, 
+ul, 
+ol, 
 li,
-blockquote,
+blockquote, 
 fieldset {
   margin: 0;
   padding: 0;
 }
 
-ul,
-ol {
-  list-style: none;
+ul, ol {
+  list-style-type: none;
 }
 
-/* Кастомный скроллбар */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
+.content {
+  margin: 133px 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  column-gap: 30px;
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgb(217 217 217 / 10%);
+.result {
+  display: flex;
+  flex-direction: column;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #D9D9D9;
+.result__video-container {
+  position: relative;
+  min-width: 711px;
+  padding-top: 78px;
+}
+
+.result__video {
+  width: 100%;
+  height: 386px;
+  object-fit: cover;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  padding-top: 11px;
+}
+
+.search-form:last-child {
+  align-items: flex-end;
+}
+
+.search-form__fieldset {
+  border: 0;
+}
+
+.search-form__fieldset-title {
+  font: 400 18px/22px "Fira Sans Condensed", sans-serif;
+  padding-bottom: 5px;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  padding-top: 4px;
+}
+
+.search-form__label {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: fit-content;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.search-form__textfield {
+  appearance: none;
+  cursor: pointer;
+  color: #fff;
+  font: 400 18px/22px "Fira Sans Condensed", sans-serif;
+  background: none;
+  min-width: 225px;
+  border: none;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.search-form__label:has(.search-form__textfield:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__textfield:active {
+  border-inline: 1px solid #fff;
+}
+
+.search-form__pseudo-checkbox {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  margin: 1px;
+  background: #fff;
+}
+
+.search-form__label:has(.search-form__checkbox:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__label-text {
+  padding-left: 5px;
+}
+
+.search-form__label:not(:has(.search-form__textfield)):hover {
+  text-decoration: underline;
+}
+
+.button {
+  cursor: pointer;
+  background: none;
+  color: #fff;
+  font: 400 18px/21px "Fira Sans Condensed", sans-serif;
+  border: 1px solid #fff;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:active {
+  background: rgba(84, 80, 80, 1);
+}
+
+.search-form__submit-button {
+  padding: 6px 73.5px;
+}
+
+.search-form__submit-button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.content__details {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  padding-bottom: 23px;
+  font: 700 75px/93% "Oswald", sans-serif;
+  text-transform: uppercase;
+}
+
+.content__accent {
+  color: #545050;
+  position: relative;
+}
+
+.content__accent::after {
+  content: "-";
+  position: relative;
+  top: -0.1em;
+}
+
+.content__list {
+  max-height: 298px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  scrollbar-width: none;
+}
+
+.content__list-item:not(:last-child) {
+  padding-bottom: 32px;
+}
+
+.content__card-link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+  margin: 2px;
+}
+
+.content__card-link_current {
+  background: rgba(84, 80, 80, 1);
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
+.content__card-link:active {
+  background: rgba(84, 80, 80, 1);
+}
+
+.content__video-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+}
+
+.content__video-card-description-container {
+  padding-left: 2px;
+}
+
+.content__video-card-title {
+  font: 700 30px/100% "Oswald", sans-serif;
+  text-transform: uppercase;
+  padding-bottom: 6px;
+}
+
+.content__video-card-description {
+  font-weight: 400;
+  line-height: 90%;
+}
+
+.content__video-card-thumbnail {
+  display: block;
+  justify-self: end;
+  width: 194px;
+  height: 103px;
+}
+
+.more-button {
+  padding: 6px 146px;
+}
+
+.more-button:focus-visible {
+  margin: 2px;
+  padding: 6px 140px;
+  outline: 1px solid #fff;
+  outline-offset: 1px;
 }
